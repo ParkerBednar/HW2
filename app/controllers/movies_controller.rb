@@ -23,6 +23,7 @@ class MoviesController < ApplicationController
         redirect=true
     end
     if redirect
+        flash.keep
         redirect_to movies_path( :sort_by=>@sorting, :ratings=>@checked_boxes)
     end
     @movies = Movie.order(@sorting).find_all_by_rating(@checked_boxes.keys) 
